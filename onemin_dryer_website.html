@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneMin Dryer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #0a0a0a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #007AFF;
+        }
+
+        /* Dark mode styles for navigation */
+        nav.dark-mode {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        nav.dark-mode .logo {
+            color: #000;
+        }
+
+        nav.dark-mode .nav-menu a {
+            color: #000;
+        }
+
+        nav.dark-mode .nav-menu a:hover {
+            color: #007AFF;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #fff;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease 2s forwards;
+        }
+
+        .scroll-indicator p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .scroll-arrow {
+            font-size: 24px;
+            margin: 0 auto;
+            animation: bounce 2s infinite;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 100px 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .product-image {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            height: 500px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #666;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 120%;
+            height: 120%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-info h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .product-info p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007AFF;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Window Cards */
+        .windows-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .windows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .window-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .window-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .window-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .window-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .footer-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #007AFF;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .product-info h2 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">OneMin</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#product">Product</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>OneMin Dryer</h1>
+            <p>One sleek device, endless drying possibilities.</p>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section" id="product">
+        <div class="container">
+            <div class="product-grid fade-in">
+                <div class="product-image">
+                    <img src="images/product.png" alt="OneMin Dryer">
+                </div>
+                <div class="product-info">
+                    <h2>1MinDryer - An absolute enemy of wetness</h2>
+                    <p>(detailed description) I've worked with a variety of startups, ensuring that design not only elevates the brand but also aligns with business goals. I seamlessly move between branding, UX, UI, and web design—incorporating windows in the design to create depth and focus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-section" id="product">
+        <div class="container">
+            <div class="product-grid fade-in">
+                <div class="product-info">
+                    <h2>Technology</h2>
+                    <p>Using advanced technology, OneMin Dryer can dry your clothes in just one minute. It's eco-friendly and energy efficient while providing a powerful drying experience.</p>
+                </div>
+                <div class="product-image">
+                    <img src="images/tech.png" alt="OneMin Dryer Technology">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <h2>Experience & Expertise</h2>
+                <p>With years of dedication to innovation and design excellence, we create products that transform everyday experiences into something extraordinary.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">years of experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Netflix</div>
+                        <div class="stat-label">Currently working at</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">SpaceCo</div>
+                        <div class="stat-label">Building</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Cook</div>
+                        <div class="stat-label">Loves to</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Windows Section -->
+    <section class="windows-section">
+        <div class="container">
+            <div class="about-content fade-in">
+                <h2>Design Philosophy</h2>
+                <p>Creating depth and focus through thoughtful design windows</p>
+            </div>
+            
+            <div class="windows-grid">
+                <div class="window-card fade-in">
+                    <h3>Branding</h3>
+                    <p>Crafting distinctive brand identities that resonate with audiences and drive business growth.</p>
+                </div>
+                <div class="window-card fade-in">
+                    <h3>UX Design</h3>
+                    <p>Creating intuitive user experiences that seamlessly guide users through every interaction.</p>
+                </div>
+                <div class="window-card fade-in">
+                    <h3>UI Design</h3>
+                    <p>Designing beautiful interfaces that combine aesthetics with functionality for optimal user engagement.</p>
+                </div>
+                <div class="window-card fade-in">
+                    <h3>Web Design</h3>
+                    <p>Building responsive, modern websites that perform beautifully across all devices and platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h3>Get in Touch</h3>
+                <p>Ready to revolutionize your drying experience? Let's connect and explore the possibilities.</p>
+                
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Dribbble</a>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 OneMin Dryer. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect and color change
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const sections = document.querySelectorAll('section');
+            const navHeight = navbar.offsetHeight;
+            const scrollPosition = window.scrollY + (navHeight/2);
+
+            // Find the current section
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    const backgroundColor = window.getComputedStyle(section).backgroundColor;
+                    const isLightBackground = isLightColor(backgroundColor);
+                    
+                    if (isLightBackground) {
+                        navbar.classList.add('dark-mode');
+                    } else {
+                        navbar.classList.remove('dark-mode');
+                    }
+                }
+            });
+
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Helper function to determine if a color is light or dark
+        function isLightColor(color) {
+            const rgb = color.match(/\d+/g);
+            if (rgb) {
+                const brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+                return brightness > 128;
+            }
+            return false;
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Mouse movement effect on hero
+        document.addEventListener('mousemove', function(e) {
+            const hero = document.querySelector('.hero');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            hero.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(0, 122, 255, 0.1) 0%, transparent 70%), linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)`;
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Hover effects for product cards
+        document.querySelectorAll('.window-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
