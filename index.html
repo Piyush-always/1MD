@@ -172,7 +172,7 @@
 
         /* Product Section */
         .product-section {
-            padding: 100px 0;
+            padding: 40px 0;
             background: #fff;
             position: relative;
         }
@@ -182,7 +182,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
-            margin-bottom: 100px;
+            margin-bottom: 0;
         }
 
         .product-image {
@@ -208,6 +208,18 @@
             transform: scale(1.1);
         }
 
+        .product-video {
+            background: #fff;
+            height: 600px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #666;
+            overflow: hidden;
+        }
+
         .product-info h2 {
             font-size: 3rem;
             margin-bottom: 30px;
@@ -222,9 +234,356 @@
             margin-bottom: 20px;
         }
 
+        /* Features Section */
+        .features-section {
+            padding: 40px 0;
+            background: #fff;
+        }
+
+        .features-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 80px;
+        }
+
+        .features-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .features-content p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .specs-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0;
+            margin-top: 40px;
+            position: relative;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .specs-grid::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #e0e0e0;
+        }
+
+        .specs-column {
+            flex: 1;
+            padding: 0 40px;
+        }
+
+        .specs-column h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .specs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .spec-item {
+            padding: 0;
+            text-align: center;
+        }
+
+        .spec-item strong {
+            display: block;
+            color: #007AFF;
+            margin-bottom: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .spec-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .specs-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-image, .feature-animation {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-image img, .feature-animation video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .center-animation {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #007AFF 0%, #0051D0 100%);
+            color: white;
+        }
+
+        .center-animation h3, .center-animation p {
+            color: white;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 40px 0;
+            background: #fff;
+        }
+
+        .categories-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 80px;
+        }
+
+        .categories-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .categories-content p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            margin: -40px 0 20px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            display: block;
+            position: relative;
+        }
+
+        .window-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-pricing {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007AFF;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 30px;
+        }
+
+        .category-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .category-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .category-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .category-features li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .category-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #007AFF;
+            font-weight: bold;
+        }
+
+        .category-pricing {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0051D0;
+            transition: color 0.3s ease;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .preorder-btn {
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #0051D0 0%, #003A9B 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preorder-btn:hover {
+            background: linear-gradient(135deg, #0051D0 0%, #003A9B 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Interactive Card Effects */
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+
+        .category-card:hover::before {
+            left: 100%;
+        }
+
         /* About Section */
         .about-section {
-            padding: 100px 0;
+            padding: 40px 0;
             background: #f8f9fa;
         }
 
@@ -309,6 +668,15 @@
             color: #666;
             line-height: 1.6;
         }
+
+        .center-symbol {
+            flex: 0 0 auto;
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: bold;
+            margin: 0 10px;
+            user-select: none;
+    }
 
         /* Footer */
         footer {
@@ -418,6 +786,25 @@
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .center-animation {
+                transform: scale(1);
+                order: 2;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .category-card:hover {
+                transform: translateY(-10px) scale(1.01);
+            }
         }
     </style>
 </head>
@@ -492,7 +879,85 @@
             </div>
         </div>
     </section>
-    
+
+    <section class="product-section" id="product">
+        <div class="container">
+            <div class="product-grid fade-in">
+                <div class="product-info">
+                    <h2>Patented technology</h2>
+                    <p>Using advanced technology, OneMin Dryer can dry your clothes in just one minute. It's eco-friendly and energy efficient while providing a powerful drying experience.</p>
+                </div>
+                <div class="product-image">
+                    <img src="images/tech-main.png" alt="OneMin Dryer Technology">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloth Dryer Animation Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-grid fade-in">
+                <div class="product-video">
+                    <video autoplay muted loop playsinline style="width: 70%; height: 100%; object-fit: cover; border-radius: 20px;">
+                        <source src="images/cloth-animation.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="product-info">
+                    <h2>Seamless Transformation</h2>
+                    <p>Watch as our innovative OneMin Dryer effortlessly transforms from a hair dryer to a cloth dryer in seconds. The patented quick-release mechanism and smart attachment system allows you to switch modes instantly, making it the perfect all-in-one solution for your drying needs.</p>
+                    <p>With our engineered airflow system, the transformation isn't just physical - the device automatically adjusts its power output and heat distribution to perfectly suit either hair or fabric drying, ensuring optimal results every time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-content fade-in">
+                <h2>Dual-Purpose Innovation</h2>
+                <p>One device, endless possibilities. Simply swap attachments to transform your experience.</p>
+            </div>
+            <div class="product-grid fade-in" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div class="product-image" style="height: 300px;">
+                    <img src="images/hair-mode.jpg" alt="Hair Dryer Mode" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="product-image" style="height: 300px;">
+                    <img src="images/cloth-mode.jpg" alt="Cloth Dryer Mode" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="specs-grid fade-in">
+                    <div class="specs-column">
+                        <h3>Hair Mode</h3>
+                        <div class="specs-list">
+                            <div class="spec-item"><p>Precise concentrator airflow.</p></div>
+                            <div class="spec-item"><p>3 heats & speeds + cool shot.</p></div>
+                            <div class="spec-item"><p>Auto-adjust power sensor.</p></div>
+                            <div class="spec-item"><p>OLED UI with memory.</p></div>
+                            <div class="spec-item"><p>Foldable, lightweight design.</p></div>
+                            <div class="spec-item"><p>Energy-saving auto-standby.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="specs-column">
+                        <h3>Fabric Mode</h3>
+                        <div class="specs-list">
+                            <div class="spec-item"><p>Snap-on wide diffuser.</p></div>
+                            <div class="spec-item"><p>4 fabric-protect modes.</p></div>
+                            <div class="spec-item"><p>Auto dry-off sensor.</p></div>
+                            <div class="spec-item"><p>Timer & progress bar.</p></div>
+                            <div class="spec-item"><p>Built-in hook & clamps.</p></div>
+                            <div class="spec-item"><p>Quick-release lint filter.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Windows Section -->
     <section class="windows-section">
         <div class="container">
@@ -530,20 +995,56 @@
         </div>
     </section>
 
-    <section class="product-section" id="product">
+    <!-- Product Categories Section -->
+    <section class="categories-section">
         <div class="container">
-            <div class="product-grid fade-in">
-                <div class="product-info">
-                    <h2>Patented technology</h2>
-                    <p>Using advanced technology, OneMin Dryer can dry your clothes in just one minute. It's eco-friendly and energy efficient while providing a powerful drying experience.</p>
+            <div class="categories-content fade-in">
+                <h2>Choose Your OneMin Experience</h2>
+                <p>Select the perfect model for your lifestyle and needs</p>
+            </div>
+            
+            <div class="windows-grid">
+                <div class="window-card fade-in">
+                    <div class="category-image">
+                        <img src="images/onemin-essential.jpg" alt="OneMin Essential">
+                    </div>
+                    <h3>OneMin Essential</h3>
+                    <p>Perfect for everyday use with all essentials</p>
+                    <div class="category-pricing">
+                        <span class="price">$149</span>
+                        <span class="original-price">$199</span>
+                    </div>
+                    <button class="preorder-btn">Pre-order Now</button>
                 </div>
-                <div class="product-image">
-                    <img src="images/tech-main.png" alt="OneMin Dryer Technology">
+
+                <div class="window-card fade-in">
+                    <div class="category-image">
+                        <img src="images/onemin-pro.jpg" alt="OneMin Pro">
+                    </div>
+                    <h3>OneMin Pro</h3>
+                    <p>Advanced features for professional results</p>
+                    <div class="category-pricing">
+                        <span class="price">$249</span>
+                        <span class="original-price">$299</span>
+                    </div>
+                    <button class="preorder-btn">Pre-order Now</button>
+                </div>
+                
+                <div class="window-card fade-in">
+                    <div class="category-image">
+                        <img src="images/onemin-compact.jpg" alt="OneMin Compact">
+                    </div>
+                    <h3>OneMin Compact</h3>
+                    <p>Ultra-portable for life on the go</p>
+                    <div class="category-pricing">
+                        <span class="price">$99</span>
+                        <span class="original-price">$129</span>
+                    </div>
+                    <button class="preorder-btn">Pre-order Now</button>
                 </div>
             </div>
         </div>
     </section>
-
 
 <!-- About Section -->
     <section class="about-section" id="about">
@@ -686,6 +1187,98 @@
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
+        });
+
+        // Interactive effects for category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                // Add ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.top = '50%';
+                ripple.style.left = '50%';
+                ripple.style.transform = 'translate(-50%, -50%)';
+                ripple.style.width = '0';
+                ripple.style.height = '0';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(0, 122, 255, 0.1)';
+                ripple.style.transition = 'width 0.6s, height 0.6s';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.zIndex = '0';
+                
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.style.width = '300px';
+                    ripple.style.height = '300px';
+                }, 10);
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const ripples = this.querySelectorAll('div[style*="border-radius: 50%"]');
+                ripples.forEach(ripple => ripple.remove());
+            });
+        });
+
+        // Pre-order button interactions
+        document.querySelectorAll('.preorder-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Get the product category
+                const card = this.closest('.category-card');
+                const category = card.dataset.category;
+                const productName = card.querySelector('h3').textContent;
+                
+                // Simple alert for demo (replace with actual pre-order logic)
+                alert(`Thank you for your interest in ${productName}! Pre-order functionality will be available soon.`);
+            });
+        });
+
+        // Add floating animation to category cards
+        document.querySelectorAll('.category-card').forEach((card, index) => {
+            const delay = index * 0.2;
+            card.style.animationDelay = `${delay}s`;
+            
+            // Add subtle floating animation
+            setInterval(() => {
+                if (!card.matches(':hover')) {
+                    card.style.transform += ` translateY(${Math.sin(Date.now() * 0.001 + index) * 2}px)`;
+                }
+            }, 50);
+        });
+
+        // Enhanced scroll animations for new sections
+        const enhancedObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Special animation for category cards
+                    if (entry.target.classList.contains('category-card')) {
+                        const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 200;
+                        setTimeout(() => {
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                            entry.target.style.opacity = '1';
+                        }, delay);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe new elements
+        document.querySelectorAll('.category-card, .feature-item').forEach(el => {
+            enhancedObserver.observe(el);
         });
     </script>
 </body>
