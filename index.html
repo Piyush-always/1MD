@@ -18,13 +18,6 @@
             background: #0c141d;
         }
 
-        /* Media helpers */
-        img, video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,18 +49,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 20px;
-            line-height: 1;
-            cursor: pointer;
         }
 
         .logo {
@@ -219,7 +200,7 @@
         }
 
         .feature-list li:before {
-            content: "â€¢";
+            content: "•";
             color: #0051D0;
             font-size: 1.5rem;
         }
@@ -363,10 +344,9 @@
 
         @media (max-width: 768px) {
             .specs-grid {
-                flex-direction: column;
-                gap: 24px;
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .specs-grid::before { display: none; }
         }
 
         .features-grid {
@@ -556,7 +536,7 @@
         }
 
         .category-features li::before {
-            content: "âœ“";
+            content: "✓";
             position: absolute;
             left: 0;
             color: #007AFF;
@@ -736,21 +716,7 @@
             font-weight: bold;
             margin: 0 10px;
             user-select: none;
-            }
-
-/* Add vertical lines connecting to the images */
-.milestone::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 1px;
-  height: 20px;
-  background: #000;
-  z-index: -1;
-}
-
-
+    }
 
         /* Footer */
         footer {
@@ -880,36 +846,6 @@
                 transform: translateY(-10px) scale(1.01);
             }
         }
-
-        /* Overrides and small fixes */
-        .feature-list li:before { content: "\2022"; }
-        .category-features li::before { content: "\2022"; }
-        .product-image img { width: 100% !important; height: auto !important; }
-
-        /* Additional responsive adjustments */
-        @media (max-width: 768px) {
-            .menu-toggle { display: inline-block; }
-            nav.open .nav-menu {
-                display: flex;
-                position: absolute;
-                top: 100%;
-                right: 0; left: 0;
-                background: rgba(12,20,29,0.98);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                padding: 12px 20px;
-                flex-direction: column;
-                gap: 14px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            .hero-slide { height: 75svh; }
-            .feature-item:hover { transform: none; box-shadow: none; }
-            .product-video { height: auto !important; aspect-ratio: 16 / 9; }
-            .product-image { height: 320px; }
-            .product-cards-container { gap: 20px !important; }
-            .window-card { width: 100% !important; max-width: 360px; margin-left: auto; margin-right: auto; }
-            .timeline-milestones { flex-direction: column; gap: 20px; }
-        }
     </style>
 </head>
 <body>
@@ -918,11 +854,10 @@
         <div class="container">
             <div class="nav-container">
                 <div class="logo">OneMin</div>
-                <button class="menu-toggle" aria-label="Toggle menu">â˜°</button>
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#product">Product</a></li>
-                    <li><a href="#about">Get</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -966,7 +901,7 @@
 
         <div class="scroll-indicator">
             <p>Scroll to explore</p>
-            <div class="scroll-arrow">â†“</div>
+            <div class="scroll-arrow">↓</div>
         </div>
     </section>
 
@@ -979,7 +914,7 @@
                 </div>
                 <div class="product-info">
                     <h2>1MinDryer: Dry in a minute</h2>
-                    <p>Smart airflow and adaptive heating blast moisture away in just 60 secondsâ€”perfectly dry, zero damage.
+                    <p>Smart airflow and adaptive heating blast moisture away in just 60 seconds—perfectly dry, zero damage.
                 </div>
             </div>
         </div>
@@ -999,28 +934,28 @@
                         <p style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 50px;">
                             <img src="images/1.png" alt="Smart Fabric Drying" style="width: 40px; height: 40px; object-fit: contain;">
                             <span style="flex: 1; text-align: left;">
-                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 5px;">Smart Fabric Drying</span>
-                                <span style="font-size: 0.9rem; font-weight: 300; color: #666;">Manual fabric selection with intelligent airflow and pulse heat â€” no damage, no overheating.</span>
+                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 2px;">Smart Fabric Drying</span>
+                                <span style="font-size: 0.9rem; font-weight: 300; color: #666;">Manual fabric selection with intelligent airflow and pulse heat — no damage, no overheating.</span>
                             </span>
                         </p>                      
                         <p style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 50px;">
                             <img src="images/2.png" alt="2-in-1 Use" style="width: 40px; height: 40px; object-fit: contain;">
                             <span style="flex: 1; text-align: left;">
-                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 5px;">2-in-1 Use</span>
+                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 2px;">2-in-1 Use</span>
                                 <span style="font-size: 0.9rem; font-weight: 300; color: #666;">Switch between Hair Dryer and Cloth Dryer with a single device.</span>
                             </span>
                         </p>
                         <p style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 50px;">
                             <img src="images/4.png" alt="Pulse Heating System" style="width: 40px; height: 40px; object-fit: contain;">
                             <span style="flex: 1; text-align: left;">
-                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 5px;">Pulse Heating System</span>
+                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 2px;">Pulse Heating System</span>
                                 <span style="font-size: 0.9rem; font-weight: 300; color: #666;">Energy-efficient, fabric-safe heat using nichrome and modular heating pads.</span>
                             </span>
                         </p>
                         <p style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 50px;">
                             <img src="images/5.png" alt="Touch Display + Alerts" style="width: 40px; height: 40px; object-fit: contain;">
                             <span style="flex: 1; text-align: left;">
-                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 5px;">Touch Display + Alerts</span>
+                                <span style="display: block; font-size: 1.3rem; font-weight: 700; color: #666; margin-bottom: 2px;">Touch Display + Alerts</span>
                                 <span style="font-size: 0.9rem; font-weight: 300; color: #666;">Simple controls with OLED/touchscreen and sound feedback.</span>
                             </span>
                         </p>
@@ -1046,41 +981,41 @@
     <!-- <section class="windows-section">
         <div class="container">
             <div class="about-content fade-in">
-                <h2>Why You'll Love Oneâ€‘Min Dryer</h2>
-                <p>One tool for tresses and textilesâ€”swap & dry in seconds.</p>
+                <h2>Why You'll Love One‑Min Dryer</h2>
+                <p>One tool for tresses and textiles—swap & dry in seconds.</p>
             </div>
             
             <div class="windows-grid">
                 <div class="window-card fade-in">
-                    <h3>60â€‘Second Dry</h3>
-                    <p>Dries hair or fabrics in under a minuteâ€”no more damp, chilly mornings.</p>
+                    <h3>60‑Second Dry</h3>
+                    <p>Dries hair or fabrics in under a minute—no more damp, chilly mornings.</p>
                 </div>
                 <div class="window-card fade-in">
-                    <h3>Energyâ€‘Efficient</h3>
-                    <p>Uses up to 30 % less power than a traditional dryerâ€”better for you and the planet.</p>
+                    <h3>Energy‑Efficient</h3>
+                    <p>Uses up to 30 % less power than a traditional dryer—better for you and the planet.</p>
                 </div>
                 <div class="window-card fade-in">
-                    <h3>2â€‘inâ€‘1 Hair & Fabric Dryer</h3>
+                    <h3>2‑in‑1 Hair & Fabric Dryer</h3>
                     <p>Quickly swap the nozzle accessory to dry hair or lightweight fabrics in one device.</p>
                 </div>
                 <div class="window-card fade-in">
-                    <h3>Fabricâ€‘Safe Heat</h3>
-                    <p>Patented pulseâ€‘heating protects delicates from overheating or scorching.</p>
+                    <h3>Fabric‑Safe Heat</h3>
+                    <p>Patented pulse‑heating protects delicates from overheating or scorching.</p>
                 </div>
                 <div class="window-card fade-in">
                     <h3>Compact & Portable</h3>
-                    <p>Slim, lightweight design slips into any suitcase or gym bagâ€”perfect on the go.</p>
+                    <p>Slim, lightweight design slips into any suitcase or gym bag—perfect on the go.</p>
                 </div>
                 <div class="window-card fade-in">
                     <h3>Smart Safety Sensors</h3>
-                    <p>Builtâ€‘in overheat detection and autoâ€‘shutoff ensure total peace of mind.</p>
+                    <p>Built‑in overheat detection and auto‑shutoff ensure total peace of mind.</p>
                 </div>
             </div>
         </div>
     </section> -->
 
     <!-- Product Features Section -->
-    <!-- <section class="features-section"> -->
+    <section class="features-section">
         <!-- <div class="container">
             <div class="features-content fade-in">
                 <h2>Dual-Purpose Innovation</h2>
@@ -1124,8 +1059,6 @@
         </div>
     </section> -->
 
-<!-- Timeline section removed -->
-
     <!-- Product Categories Section -->
     <section class="categories-section">
         <div class="container">
@@ -1133,48 +1066,86 @@
                 <h2>Choose Your OneMin Experience</h2>
                 <p>Select the perfect model for your lifestyle and needs</p>
             </div>
-            <div class="product-cards-container" style="display: flex; justify-content: center; gap: 100px;">
-                <div class="window-card fade-in" style="width: 300px; height: 450px; margin: 5px; padding: 0; overflow: hidden;">
-                    <!-- Upper half - Image -->
-                    <div class="category-image" style="width: 100%; height: 55%; margin: 0;">
-                        <img src="images/hair-dryer1.jpg" alt="OneMin Essential" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <!-- Lower half - Content -->
-                    <div class="card-content" style="padding: 10px; height: 45%; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
-                        <div>
-                            <h3 style="font-size: 1.2rem; margin: 5px 0;">OneMin Essential</h3>
-                            <p style="font-size: 0.9rem; color: #666; margin: 5px 0;">Perfect for everyday use with all essentials</p>
+                <div class="product-cards-container" style="display: flex; justify-content: center; gap: 100px;">
+                    <div class="window-card fade-in" style="width: 300px; height: 450px; margin: 5px; padding: 0; overflow: hidden;">
+                        <!-- Upper half - Image -->
+                        <div class="category-image" style="width: 100%; height: 55%; margin: 0;">
+                            <img src="images/hair-dryer1.jpg" alt="OneMin Essential" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                        <div style="margin-bottom: 10px;">
-                            <div class="category-pricing" style="margin: 5px 0;">
-                                <span class="price">â‚¹899</span>
-                                <span class="original-price">â‚¹1199</span>
+                        <!-- Lower half - Content -->
+                        <div class="card-content" style="padding: 10px; height: 45%; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
+                            <div>
+                                <h3 style="font-size: 1.2rem; margin: 5px 0;">OneMin Essential</h3>
+                                <p style="font-size: 0.9rem; color: #666; margin: 5px 0;">Perfect for everyday use with all essentials</p>
                             </div>
-                            <button class="preorder-btn" style="width: 80%; height: 40px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">Pre-order Now</button>
+                            <div style="margin-bottom: 10px;">
+                                <div class="category-pricing" style="margin: 5px 0;">
+                                    <span class="price">₹899</span>
+                                    <span class="original-price">₹1199</span>
+                                </div>
+                                <button class="preorder-btn" style="width: 80%; height: 40px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">Pre-order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="window-card fade-in" style="width: 300px; height: 450px; margin: 5px; padding: 0; overflow: hidden;">
+                        <!-- Upper half - Image -->
+                        <div class="category-image" style="width: 100%; height: 55%; margin: 0;">
+                            <img src="images/cloth-dryer.jpg" alt="OneMin Pro" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <!-- Lower half - Content -->
+                        <div class="card-content" style="padding: 10px; height: 45%; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
+                            <div>
+                                <h3 style="font-size: 1.2rem; margin: 5px 0;">OneMin Pro</h3>
+                                <p style="font-size: 0.9rem; color: #666; margin: 5px 0;">Advanced features for professional results</p>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <div class="category-pricing" style="margin: 5px 0;">
+                                    <span class="price">₹1099</span>
+                                    <span class="original-price">₹1399</span>
+                                </div>
+                                <button class="preorder-btn" style="width: 80%; height: 40px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">Pre-order Now</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="window-card fade-in" style="width: 300px; height: 450px; margin: 5px; padding: 0; overflow: hidden;">
-                    <!-- Upper half - Image -->
-                    <div class="category-image" style="width: 100%; height: 55%; margin: 0;">
-                        <img src="images/cloth-dryer.jpg" alt="OneMin Pro" style="width: 100%; height: 100%; object-fit: cover;">
+
+                <!-- <div class="window-card fade-in">
+                    <div class="category-image">
+                        <img src="images/onemin-compact.jpg" alt="OneMin Compact">
                     </div>
-                    <!-- Lower half - Content -->
-                    <div class="card-content" style="padding: 10px; height: 45%; display: flex; flex-direction: column; justify-content: space-between; text-align: center;">
-                        <div>
-                            <h3 style="font-size: 1.2rem; margin: 5px 0;">OneMin Pro</h3>
-                            <p style="font-size: 0.9rem; color: #666; margin: 5px 0;">Advanced features for professional results</p>
-                        </div>
-                        <div style="margin-bottom: 10px;">
-                            <div class="category-pricing" style="margin: 5px 0;">
-                                <span class="price">â‚¹1099</span>
-                                <span class="original-price">â‚¹1399</span>
-                            </div>
-                            <button class="preorder-btn" style="width: 80%; height: 40px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">Pre-order Now</button>
-                        </div>
+                    <h3>OneMin Compact</h3>
+                    <p>Ultra-portable for life on the go</p>
+                    <div class="category-pricing">
+                        <span class="price">₹899</span>
+                        <span class="original-price">₹1199</span>
                     </div>
+                    <button class="preorder-btn">Pre-order Now</button>
+                </div> -->
+                <!-- <div class="window-card fade-in" style="width: 300px; height: 400px; margin: 20px auto;">
+                    <div class="category-image">
+                        <img src="images/onemin-essential.jpg" alt="OneMin Essential" style="width: 100%; height: 150px; object-fit: cover;">
+                    </div>
+                    <h3 style="font-size: 1.2rem;">OneMin Essential</h3>
+                    <p style="font-size: 1rem;">Perfect for everyday use with all essentials</p>
+                    <div class="category-pricing" style="margin-top: 20px;">
+                        <span class="price">₹999</span>
+                        <span class="original-price">₹1299</span>
+                    </div>
+                    <button class="preorder-btn" style="width: 100%; margin-top: 20px;">Pre-order Now</button>
                 </div>
-            </div>
+
+                <div class="window-card fade-in" style="width: 300px;height: 400px; margin: 20px auto;">
+                    <div class="category-image">
+                        <img src="images/onemin-pro.jpg" alt="OneMin Pro" style="width: 100%; height: 150px; object-fit: cover;">
+                    </div>
+                    <h3 style="font-size: 1.2rem;">OneMin Pro</h3>
+                    <p style="font-size: 1rem;">Advanced features for professional results</p>
+                    <div class="category-pricing" style="margin-top: 20px;">
+                        <span class="price">₹1099</span>
+                        <span class="original-price">₹1399</span>
+                    </div>
+                    <button class="preorder-btn" style="width: 100%; margin-top: 20px;">Pre-order Now</button>
+                </div> -->
         </div>
     </section>
 
@@ -1354,7 +1325,7 @@
             });
         });
 
-        // Pre-order button interactions (robust on mobile)
+        // Pre-order button interactions
         document.querySelectorAll('.preorder-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1365,30 +1336,28 @@
                     this.style.transform = '';
                 }, 150);
                 
-                // Get the product card (supports both window/category cards)
-                const card = this.closest('.window-card, .category-card');
-                const productName = card ? (card.querySelector('h3')?.textContent || 'OneMin') : 'OneMin';
+                // Get the product category
+                const card = this.closest('.category-card');
+                const category = card.dataset.category;
+                const productName = card.querySelector('h3').textContent;
                 
                 // Simple alert for demo (replace with actual pre-order logic)
                 alert(`Thank you for your interest in ${productName}! Pre-order functionality will be available soon.`);
             });
         });
 
-        // Add floating animation only on hover-capable devices
-        if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            document.querySelectorAll('.category-card').forEach((card, index) => {
-                const delay = index * 0.2;
-                card.style.animationDelay = `${delay}s`;
-                let t = 0;
-                setInterval(() => {
-                    if (!card.matches(':hover')) {
-                        const offset = Math.sin(t + index) * 2;
-                        card.style.transform = `translateY(${offset}px)`;
-                        t += 0.05;
-                    }
-                }, 50);
-            });
-        }
+        // Add floating animation to category cards
+        document.querySelectorAll('.category-card').forEach((card, index) => {
+            const delay = index * 0.2;
+            card.style.animationDelay = `${delay}s`;
+            
+            // Add subtle floating animation
+            setInterval(() => {
+                if (!card.matches(':hover')) {
+                    card.style.transform += ` translateY(${Math.sin(Date.now() * 0.001 + index) * 2}px)`;
+                }
+            }, 50);
+        });
 
         // Enhanced scroll animations for new sections
         const enhancedObserver = new IntersectionObserver(function(entries) {
@@ -1411,60 +1380,10 @@
             rootMargin: '0px 0px -50px 0px'
         });
 
-        // Timeline removed â€” no progress animation needed
-
         // Observe new elements
         document.querySelectorAll('.category-card, .feature-item').forEach(el => {
             enhancedObserver.observe(el);
         });
-
-        // Mobile nav toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav#navbar');
-        if (menuToggle && nav) {
-            if (menuToggle.textContent.includes('ï¿½')) { menuToggle.textContent = 'Menu'; }
-            menuToggle.addEventListener('click', () => {
-                nav.classList.toggle('open');
-            });
-        }
-
-        // Fix scroll arrow glyph on some encodings
-        const arrowEl = document.querySelector('.scroll-arrow');
-        if (arrowEl) {
-            arrowEl.textContent = 'â†“';
-        }
-
-        // Normalize currency symbols if garbled
-        document.querySelectorAll('.price, .original-price').forEach(el => {
-            if (el.textContent.includes('ï¿½')) {
-                el.textContent = el.textContent.replace(/ï¿½+,?/g, 'â‚¹ ').trim();
-            }
-        });
-    </script>
-    <script>
-      // Final guard fixes for mobile and encoding
-      (function(){
-        const nav = document.querySelector('nav#navbar');
-        const menuToggle = document.querySelector('.menu-toggle');
-        if (menuToggle && nav) {
-          menuToggle.textContent = 'â˜°';
-          if (!menuToggle._bound) {
-            menuToggle.addEventListener('click', () => nav.classList.toggle('open'));
-            menuToggle._bound = true;
-          }
-        }
-
-        const arrowEl = document.querySelector('.scroll-arrow');
-        if (arrowEl) { arrowEl.textContent = 'â†“'; }
-
-        document.querySelectorAll('.price, .original-price').forEach(el => {
-          const raw = el.textContent.trim();
-          if (!raw.startsWith('â‚¹')) {
-            const digits = raw.replace(/[^0-9.,]/g, '');
-            el.textContent = `â‚¹ ${digits}`.trim();
-          }
-        });
-      })();
     </script>
 </body>
 </html>
