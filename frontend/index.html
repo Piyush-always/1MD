@@ -1412,7 +1412,7 @@
         });
           
     async function payNow() {
-  const res = await fetch("http://localhost:5000/create-order", {
+  const res = await fetch("https://YOUR-RENDER-URL.onrender.com/create-order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ amount: 100 }) // ₹1
@@ -1428,7 +1428,7 @@
     name: "OneMin Dryer",
 
     handler: async function (response) {
-      await fetch("http://localhost:5000/save-payment", {
+      await fetch("https://YOUR-RENDER-URL.onrender.com/save-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
