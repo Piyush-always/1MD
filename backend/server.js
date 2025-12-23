@@ -5,7 +5,15 @@ const cors = require("cors");
 const admin = require("firebase-admin");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://www.1mindry.com",
+    "https://onemd-backend.onrender.com"
+  ],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 //  Firebase (NO JSON FILE)
