@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Firebase 
+//  Firebase (NO JSON FILE)
 admin.initializeApp({
   credential: admin.credential.cert(
     JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
@@ -54,7 +54,9 @@ app.post("/save-payment", async (req, res) => {
   }
 });
 
-// Start server
-app.listen(5000, () => {
-  console.log("Backend running");
+//FOR RENDER
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log("Backend running on port", PORT);
 });
+
