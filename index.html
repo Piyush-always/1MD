@@ -1084,7 +1084,7 @@
                                     <span class="price">₹899</span>
                                     <span class="original-price">₹1199</span>
                                 </div>
-                                <button class="preorder-btn" onclick="payNow()"
+                                <button class="preorder-btn" onclick="payNow(899)"
                                 type="button"
                                 style="width: 100%;  margin-top: 10px;"
                                 >Pre-order Now</button>
@@ -1107,7 +1107,7 @@
                                     <span class="price">₹1099</span>
                                     <span class="original-price">₹1399</span>
                                 </div>
-                                <button class="preorder-btn" onclick="payNow()"
+                                <button class="preorder-btn" onclick="payNow(1099)"
                                 type="button"
                                 style="width: 100%;  margin-top: 10px;"
                                 >Pre-order Now</button>
@@ -1411,11 +1411,11 @@
             enhancedObserver.observe(el);
         });
           
-    async function payNow() {
+    async function payNow(price) {
   const res = await fetch("http://YOUR-RENDER-URL.onrender.com/create-order", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ amount: 100 }) // ₹1
+    body: JSON.stringify({ amount: price * 100 }) 
   });
 
   const order = await res.json();
